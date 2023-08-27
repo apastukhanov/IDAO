@@ -32,6 +32,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   overflow: hidden;
+
+  background: #093640;
 }
 
 * {
