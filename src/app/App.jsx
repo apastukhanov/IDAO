@@ -1,22 +1,40 @@
+import { useEffect } from "react";
+import smoothscroll from "smoothscroll-polyfill";
 import styled from "styled-components";
-import { media } from "../styles/media";
+import {
+  AboutUs,
+  Footer,
+  Header,
+  HowItWorks,
+  Main,
+  RoadMap,
+  RoleSystem,
+  StartWorkWith,
+  Tokenomics,
+} from "../components";
 
-const MainBlock = styled.div`
-  font-size: 34px;
-`;
-
-const Title = styled.h1`
-  color: red;
-  ${media.tablet`
-    color: primary;
-    padding: 0 30px;
-  `}
+const AppWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const App = () => {
+  useEffect(() => {
+    smoothscroll.polyfill();
+  });
+
   return (
-    <MainBlock>
-      <Title>HELLO WORLD</Title>
-    </MainBlock>
+    <AppWrapper>
+      <Header />
+      <Main />
+      <AboutUs />
+      <HowItWorks />
+      <RoleSystem />
+      <RoadMap />
+      <Tokenomics />
+      <StartWorkWith />
+      <Footer />
+    </AppWrapper>
   );
 };

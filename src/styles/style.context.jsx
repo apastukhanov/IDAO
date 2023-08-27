@@ -60,8 +60,6 @@ export const StyleContextProvider = ({ children }) => {
     }
   }, [width, prevWidth, setStyle, mediaType]);
 
-  console.log(theme);
-
   return (
     <StyleContext.Provider value={provider}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
