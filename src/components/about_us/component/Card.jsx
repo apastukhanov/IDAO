@@ -11,7 +11,11 @@ const Block = styled.div`
   align-items: center;
 `;
 
-const Icon = styled.img``;
+const Video = styled.video`
+  width: 188px;
+  height: 188px;
+  object-fit: cover;
+`;
 
 const Title = styled.h3`
   margin-top: 44px;
@@ -31,10 +35,13 @@ const Description = styled.p`
   line-height: 24px;
 `;
 
-export const Card = ({ icon, title, text }) => {
+export const Card = ({ video, title, text }) => {
   return (
     <Block>
-      <Icon src={icon} />
+      <Video autoPlay loop muted>
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </Video>
       <Title>{title}</Title>
       <Description>{text}</Description>
     </Block>

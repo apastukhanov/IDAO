@@ -4,7 +4,7 @@ import { colorFetch } from "./functions";
 
 export const GlobalWrapper = styled.div`
   width: 100%;
-  max-width: 1280px;
+  max-width: 1420px;
   padding: 0 70px;
   ${media.tablet`
     padding: 0 30px;
@@ -43,5 +43,10 @@ export const ButtonState = styled.button`
     border: 1px solid ${colorFetch("secondary")};
     background-color: transparent;
     color: ${colorFetch("secondary")};
+  }
+
+  &.whiteBgc {
+    background-color: ${colorFetch("secondary")};
+    color: ${colorFetch("primary")};
   }
 `;

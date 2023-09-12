@@ -3,9 +3,13 @@ import { GlobalWrapper } from "../../styles/common-components";
 import { Card } from "./component/Card";
 import { colorFetch } from "../../styles/functions";
 
-import forecast_icon from "../../assets/images/forecast_icon.svg";
-import trust_icon from "../../assets/images/trust_icon.svg";
-import vote_icon from "../../assets/images/vote_icon.svg";
+// import forecast_icon from "../../assets/images/forecast_icon.svg";
+// import trust_icon from "../../assets/images/trust_icon.svg";
+// import vote_icon from "../../assets/images/vote_icon.svg";
+
+import video1 from "./assets/video1.mp4";
+import video2 from "./assets/video2.mp4";
+import video3 from "./assets/video3.mp4";
 
 const Background = styled.div`
   display: flex;
@@ -54,17 +58,17 @@ const Cards = styled.div`
 export const AboutUs = () => {
   const cards = [
     {
-      icon: forecast_icon,
+      video: video1,
       title: "IDAO forecast",
       text: "Позволяет делать прогнозы относительно цены актива за вознаграждение (токены IDAO) и рейтинг (статус).",
     },
     {
-      icon: trust_icon,
+      video: video2,
       title: "IDAO trust",
       text: "Позволяет выбрать стратегию инвестирования и передать средства в доверительное управление с целью получения прибыли.",
     },
     {
-      icon: vote_icon,
+      video: video3,
       title: "IDAO vote",
       text: "Позволяет держателям токенов IDAO совместно принимать ключевые решения и влиять на будущее протокола IDAO.",
     },
@@ -81,8 +85,8 @@ export const AboutUs = () => {
           управления криптоактивами.
         </Description>
         <Cards>
-          {cards.map(({ icon, title, text }) => (
-            <Card icon={icon} title={title} text={text} />
+          {cards.map(({ video, title, text }) => (
+            <Card video={video} title={title} text={text} />
           ))}
         </Cards>
       </ContentWrapper>

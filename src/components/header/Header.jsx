@@ -4,6 +4,7 @@ import { ReactComponent as IDAOLogoIcon } from "../../assets/images/IDAO_logo.sv
 import { ReactComponent as WalletIcon } from "../../assets/images/wallet.svg";
 import { ButtonState, GlobalWrapper } from "../../styles/common-components";
 import { colorFetch } from "../../styles/functions";
+import { links } from "../../data/data";
 
 const Background = styled.div`
   z-index: 99;
@@ -19,7 +20,8 @@ const Background = styled.div`
   transition: all 0.2s ease-in-out;
 
   &.scrolled {
-    background-color: ${colorFetch("gray2")};
+    background-color: rgb(9 54 63 / 80%);
+    backdrop-filter: blur(20px);
   }
 `;
 
@@ -87,15 +89,6 @@ export const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const links = [
-    { text: "Что это", url: "" },
-    { text: "Как работает", url: "" },
-    { text: "Forecast", url: "" },
-    { text: "DAO", url: "" },
-    { text: "Дорожная карта", url: "" },
-    { text: "Токеномика", url: "" },
-  ];
 
   return (
     <Background className={visibleHeader && "scrolled"}>
