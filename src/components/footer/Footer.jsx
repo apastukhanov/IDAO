@@ -93,6 +93,26 @@ const Description = styled.p`
 export const Footer = () => {
   const [email, setEmail] = useState("Email");
 
+  const onClickHandler = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/subscribe/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }), // Send email in the request body
+      });
+
+      if (response.ok) {
+        console.log('Subscription successful');
+      } else {
+        console.error('Subscription failed');
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
+
   return (
     <Background>
       <ContentWrapper>
@@ -109,7 +129,7 @@ export const Footer = () => {
               onChange={(e) => setEmail(e.currentTarget.value)}
               placeholder="Email"
             />
-            <Button className={"whiteBgc"}>Подписаться</Button>
+            <Button className={"whiteBgc"} onClick={onClickHandler}>Подписаться</Button>
           </ContactForm>
         </FirstLine>
         <Line />
