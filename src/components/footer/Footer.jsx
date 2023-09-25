@@ -3,7 +3,7 @@ import { ButtonState, GlobalWrapper } from "../../styles/common-components";
 import { colorFetch } from "../../styles/functions";
 import { ReactComponent as IDAOLogoIcon } from "../../assets/images/IDAO_logo.svg";
 import { links } from "../../data/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Background = styled.div`
   display: flex;
@@ -92,14 +92,40 @@ const Description = styled.p`
 
 export const Footer = () => {
   const [email, setEmail] = useState("Email");
+  const [csrfToken, setCsrfToken] = useState(null);
+
+  // Function to fetch CSRF token
+  const fetchCsrfToken = async () => {
+    try {
+      const response = await fetch('api/get-csrf-token/');
+      if (response.ok) {
+        const data = await response.json();
+        setCsrfToken(data.csrf_token);
+      } else {
+        console.error('Failed to fetch CSRF token');
+      }
+    } catch (error) {
+      console.error('An error occurred while fetching CSRF token:', error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch CSRF token when the component mounts
+    fetchCsrfToken();
+  }, []);
 
   const onClickHandler = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/subscribe/', {
+      console.log(email);
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken, // Include the CSRF token in the headers
+      };
+
+      const response = await fetch('api/subscribe/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify({ email }), // Send email in the request body
       });
 
